@@ -5,6 +5,7 @@ import RecipeCard from "./components/RecipeCard";
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [recipes, setRecipes] = useState([]);
+  const [favorites, setFavorites] = useState(new Set()); // Using a Set for easy add/remove
   const pageNumber = useRef(1); 
 
   const handleSearchSubmit = async () => {
@@ -20,13 +21,25 @@ function App() {
   const handleViewMoreClick = async () => { 
     const nextPage = pageNumber.current + 1;
     try {
-      const nextRecipes = await searchRecipes(searchTerm, nextPage );
-      setRecipes(prevRecipes => [...prevRecipes, ...nextRecipes]); // Append new recipes to the existing recipes
-      pageNumber.current = nextPage; // Increment page number for the next call
+      const nextRecipes = await searchRecipes(searchTerm, nextPage);
+      setRecipes(prevRecipes => [...prevRecipes, ...nextRecipes]);
+      pageNumber.current = nextPage;
     } catch (error) {
       console.log(error);
     }
-  }
+  };
+
+  const toggleFavorite = (recipeId) => {
+    setFavorites(prevFavorites => {
+      const newFavorites = new Set(prevFavorites);
+      if (newFavorites.has(recipeId)) {
+        newFavorites.delete(recipeId);
+      } else {
+        newFavorites.add(recipeId);
+      }
+      return newFavorites;
+    });
+  };
 
   return (
     <div>
@@ -36,7 +49,7 @@ function App() {
       </form>
 
       {recipes.map((recipe) => (
-        <RecipeCard key={recipe.id} recipe={recipe} />
+        <RecipeCard key={recipe.id} recipe={recipe} onToggleFavorite={toggleFavorite} isFavorite={favorites.has(recipe.id)} />
       ))}
       <button className="view-more-button" onClick={handleViewMoreClick}>View More</button>
     </div>

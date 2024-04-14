@@ -1,4 +1,5 @@
 const db = require('../db');
+require('dotenv').config();
 
 // Add to favorites
 router.post('/users/:userId/favorites', async (req, res) => {
