@@ -36,6 +36,20 @@ app.get("/api/recipes/:recipeId/summary", async (req, res) => {
 });
 
 
+// Detailed Recipe Information API - Detailed Recipe
+app.get("/api/recipes/:recipeId/information", async (req, res) => {
+  const recipeId = req.params.recipeId;
+  console.log("Recipe ID:", recipeId); // Add this line for debugging
+  
+  try {
+    const results = await RecipeAPI.getRecipeInformation(recipeId);
+    res.json(results);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to fetch recipe information" });
+  }
+});
+
 
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');

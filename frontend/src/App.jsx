@@ -1,45 +1,25 @@
 import React, { useState, useRef } from "react";
 import { searchRecipes } from './api'; 
 import RecipeCard from "./components/RecipeCard";
+import {BrowserRouter as Router, Routes, Route  } from "react-router-dom";
+import Home from "./Pages/Home";
+import Favorites from "./Pages/Favorites";
+import Recipe from "./Pages/Recipe";
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [recipes, setRecipes] = useState([]);
-  const pageNumber = useRef(1); 
-
-  const handleSearchSubmit = async () => {
-    try {
-      const fetchedRecipes = await searchRecipes(searchTerm, 1);
-      setRecipes(fetchedRecipes);
-      pageNumber.current = 1;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleViewMoreClick = async () => { 
-    const nextPage = pageNumber.current + 1;
-    try {
-      const nextRecipes = await searchRecipes(searchTerm, nextPage );
-      setRecipes(prevRecipes => [...prevRecipes, ...nextRecipes]); 
-      pageNumber.current = nextPage; 
-    } catch (error) {
-      console.log(error);
-    }
-  }
+ 
 
   return (
-    <div>
-      <form onSubmit={(e) => { e.preventDefault(); handleSearchSubmit(); }}>
-        <input type="text" required placeholder="Search Term" value={searchTerm} onChange={(event)=> setSearchTerm(event.target.value)} />
-        <button type="submit">Submit</button>
-      </form>
+    <Router>
+      <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/favorites" element={<Favorites/>}/>
+      <Route path="/recipe" element={<Recipe/>}/>
 
-      {recipes.map((recipe) => (
-        <RecipeCard key={recipe.id} recipe={recipe} />
-      ))}
-      <button className="view-more-button" onClick={handleViewMoreClick}>View More</button>
-    </div>
+      </Routes>
+
+
+    </Router>
   );
 }
 

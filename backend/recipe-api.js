@@ -44,7 +44,27 @@ const getRecipeSummary = async (recipeId) => {
 };
 
 
+const getRecipeInformation = async (recipeId) => {
+  if (!apiKey) {
+    throw new Error("API Key not found");
+  }
+
+  const url = `https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=false`;
+  const params = {
+    apiKey: apiKey,
+  };
+
+  try {
+    const response = await axios.get(url, { params });
+    return response.data;
+  } catch (error) {
+    throw new Error("Failed to fetch recipe information");
+  }
+};
+
 module.exports = {
   searchRecipes,
-  getRecipeSummary
+  getRecipeSummary,
+  getRecipeInformation
 };
+
