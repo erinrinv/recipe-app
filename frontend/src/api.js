@@ -15,3 +15,21 @@ export const searchRecipes = async (searchTerm, page) => {
     throw new Error(`Failed to fetch recipes: ${error.message}`);
   }
 };
+
+
+
+
+// test code to get the summary for the modal
+
+/* export const getRecipeSummary = async (recipeId) => {
+  console.log("recipeID is:");
+  console.log(recipeId);
+  const url = new URL(`http://localhost:3001/api/recipes/${recipeId}/summary`);
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! Status: ${response.status}`);
+  }
+
+  return response.json();
+}; */

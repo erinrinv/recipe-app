@@ -21,8 +21,8 @@ function App() {
     const nextPage = pageNumber.current + 1;
     try {
       const nextRecipes = await searchRecipes(searchTerm, nextPage );
-      setRecipes(prevRecipes => [...prevRecipes, ...nextRecipes]); // Append new recipes to the existing recipes
-      pageNumber.current = nextPage; // Increment page number for the next call
+      setRecipes(prevRecipes => [...prevRecipes, ...nextRecipes]); 
+      pageNumber.current = nextPage; 
     } catch (error) {
       console.log(error);
     }
