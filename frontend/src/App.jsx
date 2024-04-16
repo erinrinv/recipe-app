@@ -2,9 +2,10 @@ import React, { useState, useRef } from "react";
 import { searchRecipes } from './api'; 
 import RecipeCard from "./components/RecipeCard";
 import {BrowserRouter as Router, Routes, Route  } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Home from "./Pages/Home";
 import Favorites from "./Pages/Favorites";
-import Recipe from "./Pages/Recipe";
+import RecipePage from "./Pages/RecipePage"; 
 
 function App() {
  
@@ -14,7 +15,7 @@ function App() {
       <Routes>
       <Route path="/" element={<Home/>}/>
       <Route path="/favorites" element={<Favorites/>}/>
-      <Route path="/recipe" element={<Recipe/>}/>
+      <Route path="/:recipeId" element={<RecipePage/>}/>
 
       </Routes>
 

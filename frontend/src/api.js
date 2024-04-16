@@ -16,7 +16,21 @@ export const searchRecipes = async (searchTerm, page) => {
   }
 };
 
+export const getRecipeInformation = async (recipeId) => {
+  const baseUrl = new URL(`http://localhost:3001/api/recipes/${recipeId}/information`);
 
+  try {
+    const response = await fetch(baseUrl);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    return data; // Assuming data contains detailed recipe information
+  } catch (error) {
+    throw new Error(`Failed to fetch recipe information: ${error.message}`);
+  }
+};
 
 
 // test code to get the summary for the modal
