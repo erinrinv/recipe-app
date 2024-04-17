@@ -18,6 +18,7 @@ const searchRecipes = async (searchTerm, page) => {
 
   try {
     const searchResponse = await axios.get(url, { params: queryParams });
+    console.log(searchResponse);
     return searchResponse.data;
   } catch (error) {
     console.log(error);

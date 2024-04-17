@@ -10,6 +10,7 @@ export const searchRecipes = async (searchTerm, page) => {
     }
     
     const data = await response.json();
+    console.log(data);
     return data.results; // Assuming results is an array of recipes
   } catch (error) {
     throw new Error(`Failed to fetch recipes: ${error.message}`);

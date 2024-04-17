@@ -13,7 +13,6 @@ const RecipeCard = ({ recipe }) => {
       <img src={recipe.image} alt={recipe.title} />
       <div className="recipe-card-title">
         <h3>{recipe.title}</h3>
-        {/* Add button to navigate to recipe page */}
         <button onClick={handleRecipeClick}>View Recipe</button>
       </div>
     </div>

@@ -10,6 +10,7 @@ function Home() {
   const handleSearchSubmit = async () => {
     try {
       const fetchedRecipes = await searchRecipes(searchTerm, 1);
+      console.log(fetchedRecipes);
       setRecipes(fetchedRecipes);
       pageNumber.current = 1;
     } catch (error) {

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { searchRecipes } from './api'; 
 import RecipeCard from "./components/RecipeCard";
 import {BrowserRouter as Router, Routes, Route  } from "react-router-dom";
@@ -8,7 +8,14 @@ import Favorites from "./Pages/Favorites";
 import RecipePage from "./Pages/RecipePage"; 
 
 function App() {
- 
+
+  const [userId, setUserId] = useState(null);
+  
+
+    useEffect(() => {
+
+    setUserId(1);
+  }, []);
 
   return (
     <Router>
