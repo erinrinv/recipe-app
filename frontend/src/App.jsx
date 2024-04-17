@@ -5,7 +5,7 @@ import RecipeCard from "./components/RecipeCard";
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [recipes, setRecipes] = useState([]);
-  const [favorites, setFavorites] = useState(new Set()); // Using a Set for easy add/remove
+  const [favorites, setFavorites] = useState(new Set());
   const pageNumber = useRef(1); 
 
   const handleSearchSubmit = async () => {
