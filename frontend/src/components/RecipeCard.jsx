@@ -1,5 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Card from '@mui/material/Card';
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions'; // Add this import
+import InfoIcon from '@mui/icons-material/Info';
+import IconButton from '@mui/material/IconButton';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 const RecipeCard = ({ recipe }) => {
   // Function to handle button click and navigate to the recipe page
@@ -10,12 +18,31 @@ const RecipeCard = ({ recipe }) => {
 
   return (
     <div className="recipe-card" key={recipe.id}>
-      <img src={recipe.image} alt={recipe.title} />
-      <div className="recipe-card-title">
-        <h3>{recipe.title}</h3>
-        {/* Add button to navigate to recipe page */}
-        <button onClick={handleRecipeClick}>View Recipe</button>
-      </div>
+      <Card sx={{ maxWidth: 345 }}>
+        <Link to={`/${recipe.id}`} style={{ textDecoration: 'none' }}>
+          <CardHeader
+            action={
+              <IconButton aria-label="settings">
+                <InfoIcon />
+              </IconButton>
+            }
+            title={recipe.title}
+          />
+        </Link>
+      <CardMedia
+        component="img"
+        height="194"
+        image={recipe.image}
+        alt={recipe.title}
+      />
+      <CardActions disableSpacing>
+        <IconButton aria-label="add to favorites">
+          <FavoriteIcon />
+        </IconButton>
+        
+      </CardActions>
+    </Card>
+     
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getRecipeDetails } from '../api'; // Assuming you have an API function to fetch recipe details
-
+import { getRecipeDetails } from '../api'; 
 function RecipeDetailsPage() {
   const { id } = useParams();
   const [recipe, setRecipe] = useState(null);
@@ -26,7 +25,7 @@ function RecipeDetailsPage() {
   return (
     <div>
       <h2>{recipe.title}</h2>
-      {/* Render other details of the recipe */}
+      
     </div>
   );
 }
