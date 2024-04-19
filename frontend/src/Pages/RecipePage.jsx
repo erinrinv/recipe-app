@@ -1,8 +1,10 @@
+// RecipePage.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getRecipeInformation } from '../api'; 
 import { Button, Card, Container } from '@mui/material';
 import ButtonAppBar from "../components/nav.jsx";
+import '../components/recipepage.css'; 
 
 function RecipePage() {
   const { recipeId } = useParams();
@@ -31,15 +33,15 @@ function RecipePage() {
   }
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+    <div className="recipe-page-container"> 
       <ButtonAppBar />
-      <Container style={{ textAlign: 'center' }}>
-        <Card style={{ marginBottom: '20px' }}>
+      <Container className="recipe-container">
+        <Card className="recipe-card">
           <h2>{recipe.title}</h2>
           <img src={recipe.image} alt={recipe.title} />
         </Card>
        
-        <Card style={{ marginBottom: '20px' }}>
+        <Card className="tab-card">
           <div>
             <Button variant="contained" color="success" size="small" onClick={() => handleTabChange('instructions')}>Instructions</Button>
             <Button variant="contained" color="success" size="small" onClick={() => handleTabChange('ingredients')}>Ingredients</Button>
