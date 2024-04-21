@@ -13,7 +13,7 @@ const RecipeModal = () => {
               &times;
             </span>
           </div>
-          <p>RECCIPE SUMMARY</p>
+          <p>RECIPE SUMMARY</p>
         </div>
       </div>
     </>
