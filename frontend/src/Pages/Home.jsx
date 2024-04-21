@@ -1,6 +1,10 @@
 import React, { useState, useRef } from "react";
 import { searchRecipes } from "../api";
 import RecipeCard from "../components/RecipeCard";
+import Button from '@mui/material/Button';
+import { Container, Grid } from "@mui/material";
+import "../components/home.css"; 
+import ButtonAppBar from "../components/nav.jsx";
 
 function Home() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -30,16 +34,22 @@ function Home() {
   }
 
   return (
-    <div>
-      <form onSubmit={(e) => { e.preventDefault(); handleSearchSubmit(); }}>
+    <div className="home-container">
+       <ButtonAppBar /> 
+      <form onSubmit={(e) => { e.preventDefault(); handleSearchSubmit(); }} style={{ marginBottom: "20px" }}>
         <input type="text" required placeholder="Search Term" value={searchTerm} onChange={(event)=> setSearchTerm(event.target.value)} />
-        <button type="submit">Submit</button>
+        <Button type="submit" variant="contained" size="small">Submit</Button>
       </form>
 
-      {recipes.map((recipe) => (
-        <RecipeCard key={recipe.id} recipe={recipe} />
-      ))}
-      <button className="view-more-button" onClick={handleViewMoreClick}>View More</button>
+      <Container>
+        <Grid container spacing ={3}  justifyContent="center">
+        {recipes.map((recipe) => (
+          <RecipeCard key={recipe.id} recipe={recipe} />
+        ))}
+        </Grid>
+      </Container>
+
+      <Button className="view-more-button" onClick={handleViewMoreClick} variant="contained" size="small">View More</Button>
     </div>
   );
 }
