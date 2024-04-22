@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function Favorites({ userId }) {
+function FavoritesPage({ userId }) {
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
@@ -29,4 +29,4 @@ function Favorites({ userId }) {
   );
 }
 
-export default Favorites;
+export default FavoritesPage;
