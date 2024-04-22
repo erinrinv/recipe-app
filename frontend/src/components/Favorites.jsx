@@ -7,7 +7,7 @@ function Favorites({ userId }) {
   useEffect(() => {
     const fetchFavorites = async () => {
       try {
-        const response = await axios.get(`http://localhost:3001/api/users/${userId}/favorites`);
+        const response = await axios.get(`http://localhost:5173/api/users/${userId}/favorites`);
         setFavorites(response.data);
       } catch (error) {
         console.error('Error fetching favorites:', error);

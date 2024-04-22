@@ -14,11 +14,11 @@ function LoginForm({ onLoginSuccess }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError('');
+    setError(''); // Reset error message
     try {
-      const response = await axios.post('/api/users/login', formData);
+      const response = await axios.post('http://localhost:5173/api/users/login', formData);
       console.log('User logged in:', response.data);
-      onLoginSuccess(response.data);
+      onLoginSuccess(response.data); // Handle successful login
     } catch (error) {
       setError(error.response.data.message || 'Login failed!');
       console.error('Login failed:', error.response.data);
