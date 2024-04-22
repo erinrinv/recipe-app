@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import RecipeCard from "../components/RecipeCard";
+import RecipeCard from './RecipeCard';
 
-function FavoritesPage({ userId }) {
+function Favorites({ userId }) {
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
+
     const fetchFavorites = async () => {
       try {
+
         const response = await axios.get(`http://localhost:5173/api/users/${userId}/favorites`);
         setFavorites(response.data);
       } catch (error) {
@@ -28,4 +30,4 @@ function FavoritesPage({ userId }) {
   );
 }
 
-export default FavoritesPage;
+export default Favorites;
