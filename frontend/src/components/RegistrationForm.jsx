@@ -13,32 +13,29 @@ function RegistrationForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError(''); // Reset error message
-    try {
-      const response = await axios.post('http://localhost:3001/api/users/register', formData);
-      console.log('User registered:', response.data);
-      alert('Registration successful!');
-    } catch (error) {
-      // Updated error handling
-      if (error.response && error.response.data) {
-        // Server responded with a status code outside the 2xx range
-        setError(error.response.data.message || 'Registration failed!');
-        console.error('Registration failed:', error.response.data);
-        console.log(data);
-      } else if (error.request) {
-        // Request was made but no response was received
-        setError('No response from server. Please try again later.');
-        console.error('No response from server:', error.request);
-      } else {
-        // Something else happened in setting up the request
-        setError('An error occurred. Please try again.');
-        console.error('Error:', error.message);
-      }
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setError(''); // Reset error message
+  try {
+    const response = await axios.post('http://localhost:3001/api/users/register', formData);
+    console.log('User registered:', response.data);
+    alert('Registration successful!');
+  } catch (error) {
+    if (error.response && error.response.data) {
+      // Server responded with a status code outside the 2xx range
+      setError(error.response.data.message || 'Registration failed!');
+      console.error('Registration failed:', error.response.data);
+    } else if (error.request) {
+      // Request was made but no response was received
+      setError('No response from server. Please try again later.');
+      console.error('No response from server:', error.request);
+    } else {
+      // Something else happened in setting up the request
+      setError('An error occurred. Please try again.');
+      console.error('Error:', error.message);
     }
-  };
-
+  }
+};
   return (
     <form onSubmit={handleSubmit}>
       <h2>Register</h2>

@@ -4,16 +4,11 @@ import Home from "./Pages/Home";
 import Favorites from "./Pages/Favorites";
 import RecipePage from "./Pages/RecipePage";
 import RegistrationPage from "./Pages/RegistrationPage";
-import Login from "./Pages/Login";
+import LoginPage from './Pages/Login';
 import Nav from "./components/nav";
 
 function App() {
-  const [userId, setUserId] = useState(null);
-
-  useEffect(() => {
-    setUserId(1); //
-  }, []);
-
+  
   return (
     <Router>
       <Nav />
@@ -22,7 +17,7 @@ function App() {
         <Route path="/favorites" element={<Favorites/>}/>
         <Route path="/:recipeId" element={<RecipePage/>}/>
         <Route path="/register" element={<RegistrationPage/>}/>
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/login" element={<LoginPage/>}/>
       </Routes>
     </Router>
   );

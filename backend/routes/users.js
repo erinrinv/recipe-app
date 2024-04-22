@@ -4,6 +4,7 @@ const router = express.Router();
 const client = require('../db/db');
 const bcrypt = require('bcrypt');
 
+
 router.post('/register', async (req, res) => {
   const { username, email, password } = req.body;
   try {
