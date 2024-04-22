@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import RecipeCard from "../components/RecipeCard";
 
 function FavoritesPage({ userId }) {
   const [favorites, setFavorites] = useState([]);
@@ -20,11 +21,9 @@ function FavoritesPage({ userId }) {
   return (
     <div>
       <h2>My Favorites</h2>
-      <ul>
-        {favorites.map(favorite => (
-          <li key={favorite.recipeId}>{favorite.title} - Recipe details here</li>
-        ))}
-      </ul>
+      {favorites.map(favorite => (
+        <RecipeCard key={favorite.recipe_id} recipe={favorite} isFavorite={true} />
+      ))}
     </div>
   );
 }
