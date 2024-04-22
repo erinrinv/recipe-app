@@ -26,6 +26,7 @@ function RegistrationForm() {
         // Server responded with a status code outside the 2xx range
         setError(error.response.data.message || 'Registration failed!');
         console.error('Registration failed:', error.response.data);
+        console.log(data);
       } else if (error.request) {
         // Request was made but no response was received
         setError('No response from server. Please try again later.');
