@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -9,7 +9,10 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 function RecipeCard({ recipe, isFavorite, onToggleFavorite }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardHeader title={recipe.title} />
+      <CardHeader
+        title={recipe.title}
+        // Other props
+      />
       <CardMedia
         component="img"
         height="194"
@@ -17,7 +20,7 @@ function RecipeCard({ recipe, isFavorite, onToggleFavorite }) {
         alt={recipe.title}
       />
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" onClick={() => onToggleFavorite(recipe.recipe_id)}>
+        <IconButton aria-label="add to favorites" onClick={() => onToggleFavorite(recipe.id)}>
           <FavoriteIcon color={isFavorite ? 'secondary' : 'action'} />
         </IconButton>
       </CardActions>

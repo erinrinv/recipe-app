@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import RecipeCard from './RecipeCard';
+import { addFavorite, removeFavorite } from './api';  // Import the API functions
 
 function FavoritesPage({ userId }) {
   const [favorites, setFavorites] = useState([]);
@@ -15,19 +16,31 @@ function FavoritesPage({ userId }) {
       }
     };
 
-    if (userId) {
-      fetchFavorites();
-    }
+    fetchFavorites();
   }, [userId]);
 
+  const onToggleFavorite = async (recipeId) => {
+    const isFavorited = favorites.some(fav => fav.recipe_id === recipeId);
+    if (isFavorited) {
+      await removeFavorite(userId, recipeId);
+    } else {
+      await addFavorite(userId, recipeId);
+    }
+
+    fetchFavorites();
+  };
+
   return (
-    <div className="favorites-container">
+    <div>
       <h2>My Favorites</h2>
-      <div className="recipe-grid-container">
-        {favorites.map(favorite => (
-          <RecipeCard key={favorite.recipe_id} recipe={favorite} isFavorite={true} />
-        ))}
-      </div>
+      {favorites.map(favorite => (
+        <RecipeCard
+          key={favorite.recipe_id}
+          recipe={favorite}
+          isFavorite={true}
+          onToggleFavorite={onToggleFavorite}
+        />
+      ))}
     </div>
   );
 }

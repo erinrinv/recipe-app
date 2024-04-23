@@ -33,6 +33,39 @@ export const getRecipeInformation = async (recipeId) => {
   }
 };
 
+export const addFavorite = async (userId, recipeId) => {
+  const url = `http://localhost:3001/api/users/${userId}/favorites`;
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ recipeId })
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  } catch (error) {
+    throw new Error(`Failed to add favorite: ${error.message}`);
+  }
+};
+
+
+export const removeFavorite = async (userId, recipeId) => {
+  const url = `http://localhost:3001/api/users/${userId}/favorites/${recipeId}`;
+  try {
+    const response = await fetch(url, {
+      method: 'DELETE'
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  } catch (error) {
+    throw new Error(`Failed to remove favorite: ${error.message}`);
+  }
+};
+
 
 // test code to get the summary for the modal
 
