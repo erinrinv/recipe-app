@@ -20,10 +20,10 @@ The server-side infrastructure is constructed using Node.js and Express.js, with
 ### Signup page
 
 
-### Deals page of recipe
+### Details Page
 
 
-### Recipe favorites
+### Favorites Page
 
 
 ### Login Page
