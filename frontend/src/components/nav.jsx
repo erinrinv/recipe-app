@@ -19,7 +19,8 @@ export default function ButtonAppBar({ user, onLogout }) {
           <MenuIcon />
         </IconButton>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          All Recipes
+        <span style={{ marginRight: '8px' }}>Recipeezy</span>
+        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>All Recipes</Link>
         </Typography>
 
         <Button color="inherit" component={Link} to="/favorites" sx={{ color: '#fff' }}>
