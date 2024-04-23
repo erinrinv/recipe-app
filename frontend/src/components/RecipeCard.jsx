@@ -24,11 +24,8 @@ function RecipeCard({ recipe, isFavorite, onToggleFavorite }) {
           title={recipe.title}
         />
       </Link>
-
-    
-   
       <CardHeader
-        title={recipe.title}
+        
         // Other props
       />
       <CardMedia
