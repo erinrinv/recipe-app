@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 
 function RegistrationForm() {
+  const navigate = useNavigate(); // Initialize the navigate function
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -13,29 +15,19 @@ function RegistrationForm() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setError(''); // Reset error message
-  try {
-    const response = await axios.post('http://localhost:5173/api/users/register', formData);
-    console.log('User registered:', response.data);
-    alert('Registration successful!');
-  } catch (error) {
-    if (error.response && error.response.data) {
-      // Server responded with a status code outside the 2xx range
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    try {
+      const response = await axios.post('http://localhost:5173/api/users/register', formData);
+      console.log('User registered:', response.data);
+      navigate('/login'); // Redirect to the login page after successful registration
+    } catch (error) {
       setError(error.response.data.message || 'Registration failed!');
       console.error('Registration failed:', error.response.data);
-    } else if (error.request) {
-      // Request was made but no response was received
-      setError('No response from server. Please try again later.');
-      console.error('No response from server:', error.request);
-    } else {
-      // Something else happened in setting up the request
-      setError('An error occurred. Please try again.');
-      console.error('Error:', error.message);
     }
-  }
-};
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <h2>Register</h2>

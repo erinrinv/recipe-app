@@ -7,7 +7,7 @@ function Favorites() {
       <FavoritesPage>
 
       </FavoritesPage>
-      <h1>THIS IS THE FAVORITES PAGE</h1>
+      <h1>Welcome to the favorites page! Here is where your favorites are stored!</h1>
     </div>
   );
 }
