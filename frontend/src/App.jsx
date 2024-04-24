@@ -33,7 +33,7 @@ function App() {
         setFavorites(favorites.filter(fav => fav.recipe_id !== recipeId));
       } else {
         const response = await axios.post(`http://localhost:5173/api/favorites/users/${userId}/favorites`, { recipeId });
-        setFavorites([...favorites, recipeId]);
+        setFavorites([response.data]);
       }
     } catch (error) {
       console.error('Error toggling favorite:', error);

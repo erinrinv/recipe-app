@@ -6,7 +6,7 @@ router.get('/users/:userId/favorites', async (req, res) => {
   const { userId } = req.params;
   try {
     const selectQuery = `
-      SELECT f.*, r.title, r.description 
+      SELECT f.*, r.title, r.summary
       FROM favorites f
       JOIN recipes r ON f.recipe_id = r.recipe_id
       WHERE f.user_id = $1
@@ -22,6 +22,7 @@ router.get('/users/:userId/favorites', async (req, res) => {
 router.post('/users/:userId/favorites', async (req, res) => {
   const { userId } = req.params;
   const { recipeId } = req.body;
+  console.log(userId, recipeId);
   try {
     const insertQuery = 'INSERT INTO favorites (user_id, recipe_id) VALUES ($1, $2) RETURNING *';
     const favorite = await pool.query(insertQuery, [userId, recipeId]);
