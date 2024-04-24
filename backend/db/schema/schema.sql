@@ -1,8 +1,8 @@
-DROP TABLE recipes;
-DROP TABLE favorites;
-DROP TABLE users;
-DROP TABLE recipe_ingredients;
-DROP TABLE ingredients;
+--DROP TABLE recipes;
+--DROP TABLE favorites;
+--DROP TABLE users;
+--DROP TABLE recipe_ingredients;
+--DROP TABLE ingredients;
 
 
 SET statement_timeout = 0;

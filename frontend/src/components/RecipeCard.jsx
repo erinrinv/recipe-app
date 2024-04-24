@@ -10,7 +10,6 @@ import InfoIcon from '@mui/icons-material/Info';
 
 
 function RecipeCard({ recipe, isFavorite , onToggleFavorite }) {
-  console.log(onToggleFavorite)
   return (
     <div className="recipe-card">
     <Card sx={{ maxWidth: 345 }}>
