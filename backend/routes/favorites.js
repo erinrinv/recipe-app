@@ -8,14 +8,14 @@ router.get('/users/:userId/favorites', async (req, res) => {
     const selectQuery = `
       SELECT f.*, r.title, r.description 
       FROM favorites f
-      JOIN recipes r ON f.recipe_id = r.id
+      JOIN recipes r ON f.recipe_id = r.recipe_id
       WHERE f.user_id = $1
     `;
     const result = await pool.query(selectQuery, [userId]);
     res.json(result.rows);
   } catch (err) {
     console.error('Error retrieving favorites:', err);
-    res.status(500).json({ message: 'Failed to retrieve favorites', error: err.message });
+    res.status(500).json({ message: 'Failed to retrieve favs', error: err.message });
   }
 });
 
@@ -47,5 +47,7 @@ router.delete('/users/:userId/favorites/:recipeId', async (req, res) => {
     res.status(500).json({ message: 'Failed to remove favorite', error: err.message });
   }
 });
+
+
 
 module.exports = router;

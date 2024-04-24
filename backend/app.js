@@ -15,7 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Move cors middleware here
+
 app.use(cors());
 
 // Search API - Search Query
@@ -39,7 +39,7 @@ app.get("/api/recipes/:recipeId/summary", async (req, res) => {
 // Detailed Recipe Information API - Detailed Recipe
 app.get("/api/recipes/:recipeId/information", async (req, res) => {
   const recipeId = req.params.recipeId;
-  console.log("Recipe ID:", recipeId); // Add this line for debugging
+  console.log("Recipe ID:", recipeId);
   
   try {
     const results = await RecipeAPI.getRecipeInformation(recipeId);
@@ -51,10 +51,14 @@ app.get("/api/recipes/:recipeId/information", async (req, res) => {
 });
 
 
+
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const favoriteRouter = require('./routes/favorites');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/favorites', favoriteRouter);
+
 
 module.exports = app;

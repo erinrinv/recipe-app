@@ -1,36 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import RecipeCard from './RecipeCard';
-import { addFavorite, removeFavorite } from './api';  // Import the API functions
+import RecipeCard from "../components/RecipeCard";
 
-function FavoritesPage({ userId }) {
-  const [favorites, setFavorites] = useState([]);
+function FavoritesPage(props) {
+  const { favorites, onToggleFavorite } = props;
 
-  useEffect(() => {
-    const fetchFavorites = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5173/api/users/${userId}/favorites`);
-        setFavorites(response.data);
-      } catch (error) {
-        console.error('Error fetching favorites:', error);
-      }
-    };
 
-    fetchFavorites();
-  }, [userId]);
-
-  const onToggleFavorite = async (recipeId) => {
-    const isFavorited = favorites.some(fav => fav.recipe_id === recipeId);
-    if (isFavorited) {
-      await removeFavorite(userId, recipeId);
-    } else {
-      await addFavorite(userId, recipeId);
-    }
-
-    fetchFavorites();
-  };
-
-  return (
+  return favorites&&(
     <div>
       <h2>My Favorites</h2>
       {favorites.map(favorite => (

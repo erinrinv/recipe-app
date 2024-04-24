@@ -38,4 +38,21 @@ router.post('/login', async (req, res) => {
   }
 });
 
+router.get("/favorites", async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const selectQuery = `
+      SELECT f.*, r.title, r.description 
+      FROM favorites f
+      JOIN recipes r ON f.recipe_id = r.id
+      WHERE f.user_id = $1
+    `;
+    const result = await pool.query(selectQuery, [userId]);
+    res.json(result.rows);
+  } catch (err) {
+    console.error('Error retrieving favorites:', err);
+    res.status(500).json({ message: 'Failed to retrieve favorit', error: err.message });
+  }
+});
+
 module.exports = router;
