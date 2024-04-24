@@ -1,9 +1,8 @@
-DROP TABLE recipes;
+-- DROP TABLE recipe_ingredients;
 DROP TABLE favorites;
+-- DROP TABLE ingredients;
+-- DROP TABLE recipes;
 DROP TABLE users;
-DROP TABLE recipe_ingredients;
-DROP TABLE ingredients;
-
 
 
 CREATE TABLE favorites (
@@ -27,7 +26,7 @@ CREATE TABLE favorites (
 --     measurements character varying(50)
 -- );
 
--- CREATE TABLE public.recipes (
+-- CREATE TABLE recipes (
 --     recipe_id integer NOT NULL,
 --     title character varying(255) NOT NULL,
 --     summary text NOT NULL,
@@ -43,7 +42,7 @@ CREATE TABLE users (
 );
 
 
-ALTER TABLE ONLY public.favorites
+ALTER TABLE ONLY favorites
     ADD CONSTRAINT favorites_pkey PRIMARY KEY (favorite_id);
 
 
@@ -51,39 +50,39 @@ ALTER TABLE ONLY public.favorites
 -- Name: ingredients ingredients_pkey; Type: CONSTRAINT; Schema: public; Owner: labber
 --
 
-ALTER TABLE ONLY public.ingredients
-    ADD CONSTRAINT ingredients_pkey PRIMARY KEY (ingredient_id);
+-- ALTER TABLE ONLY ingredients
+--     ADD CONSTRAINT ingredients_pkey PRIMARY KEY (ingredient_id);
 
 
 --
 -- Name: recipe_ingredients recipe_ingredients_pkey; Type: CONSTRAINT; Schema: public; Owner: labber
 --
 
-ALTER TABLE ONLY public.recipe_ingredients
-    ADD CONSTRAINT recipe_ingredients_pkey PRIMARY KEY (recipe_ingredients_id);
+-- ALTER TABLE ONLY recipe_ingredients
+--     ADD CONSTRAINT recipe_ingredients_pkey PRIMARY KEY (recipe_ingredients_id);
 
 
 --
 -- Name: recipes recipes_pkey; Type: CONSTRAINT; Schema: public; Owner: labber
 --
 
-ALTER TABLE ONLY public.recipes
-    ADD CONSTRAINT recipes_pkey PRIMARY KEY (recipe_id);
+-- ALTER TABLE ONLY recipes
+--     ADD CONSTRAINT recipes_pkey PRIMARY KEY (recipe_id);
 
 
---
--- Name: recipes recipes_spoon_recipe_id_key; Type: CONSTRAINT; Schema: public; Owner: labber
---
+-- --
+-- -- Name: recipes recipes_spoon_recipe_id_key; Type: CONSTRAINT; Schema: public; Owner: labber
+-- --
 
-ALTER TABLE ONLY public.recipes
-    ADD CONSTRAINT recipes_spoon_recipe_id_key UNIQUE (spoon_recipe_id);
+-- ALTER TABLE ONLY recipes
+--     ADD CONSTRAINT recipes_spoon_recipe_id_key UNIQUE (spoon_recipe_id);
 
 
 --
 -- Name: users users_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.users
+ALTER TABLE ONLY users
     ADD CONSTRAINT users_email_key UNIQUE (email);
 
 
@@ -91,7 +90,7 @@ ALTER TABLE ONLY public.users
 -- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.users
+ALTER TABLE ONLY users
     ADD CONSTRAINT users_pkey PRIMARY KEY (user_id);
 
 
@@ -99,35 +98,35 @@ ALTER TABLE ONLY public.users
 -- Name: users users_username_key; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public.users
+ALTER TABLE ONLY users
     ADD CONSTRAINT users_username_key UNIQUE (username);
 
 
 --
 -- Name: favorites favorites_recipe_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: labber
 --
---ALTER TABLE ONLY public.favorites
- --   ADD CONSTRAINT favorites_recipe_id_fkey FOREIGN KEY (recipe_id) REFERENCES public.recipes(recipe_id);
+--ALTER TABLE ONLY favorites
+ --   ADD CONSTRAINT favorites_recipe_id_fkey FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id);
 
 
 --
 -- Name: favorites favorites_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: labber
 --
 
-ALTER TABLE ONLY public.favorites
-    ADD CONSTRAINT favorites_user_id_fkey FOREIGN KEY (user_id) REFERENCES public.users(user_id);
+ALTER TABLE ONLY favorites
+    ADD CONSTRAINT favorites_user_id_fkey FOREIGN KEY (user_id) REFERENCES users(user_id);
 
 
 --
 -- Name: recipe_ingredients recipe_ingredients_ingredient_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: labber
 --
 
--- ALTER TABLE ONLY public.recipe_ingredients
---     ADD CONSTRAINT recipe_ingredients_ingredient_id_fkey FOREIGN KEY (ingredient_id) REFERENCES public.ingredients(ingredient_id);
+-- ALTER TABLE ONLY recipe_ingredients
+--     ADD CONSTRAINT recipe_ingredients_ingredient_id_fkey FOREIGN KEY (ingredient_id) REFERENCES ingredients(ingredient_id);
 
 
--- ALTER TABLE ONLY public.recipe_ingredients
---     ADD CONSTRAINT recipe_ingredients_recipe_id_fkey FOREIGN KEY (recipe_id) REFERENCES public.recipes(recipe_id);
+-- ALTER TABLE ONLY recipe_ingredients
+--     ADD CONSTRAINT recipe_ingredients_recipe_id_fkey FOREIGN KEY (recipe_id) REFERENCES recipes(recipe_id);
 
 
 --
