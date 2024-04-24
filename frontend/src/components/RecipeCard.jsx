@@ -10,10 +10,12 @@ import InfoIcon from '@mui/icons-material/Info';
 
 
 function RecipeCard({ recipe, isFavorite , onToggleFavorite }) {
+  const id = recipe.id ? recipe.id : recipe.recipe_id;
+  console.log(recipe);
   return (
     <div className="recipe-card">
     <Card sx={{ maxWidth: 345 }}>
-      <Link to={`/${recipe.id}`} style={{ textDecoration: 'none' }}>
+      <Link to={`/${id}`} style={{ textDecoration: 'none' }}>
         <CardHeader
           action={
             <IconButton aria-label="settings">
@@ -33,7 +35,7 @@ function RecipeCard({ recipe, isFavorite , onToggleFavorite }) {
         alt={recipe.title}
       />
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" onClick={() => onToggleFavorite(recipe.id)}>
+        <IconButton aria-label="add to favorites" onClick={() => onToggleFavorite(id)}>
           <FavoriteIcon color={isFavorite ? 'secondary' : 'action'} />
         </IconButton>
       </CardActions>

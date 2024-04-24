@@ -4,7 +4,7 @@ import RecipeCard from "../components/RecipeCard";
 
 function FavoritesPage(props) {
   const { favorites, onToggleFavorite } = props;
-
+console.log(favorites);
 
   return favorites&&(
     <div>

@@ -6,12 +6,12 @@ router.get('/users/:userId/favorites', async (req, res) => {
   const { userId } = req.params;
   try {
     const selectQuery = `
-      SELECT f.*, r.title, r.summary
+      SELECT f.*
       FROM favorites f
-      JOIN recipes r ON f.recipe_id = r.recipe_id
       WHERE f.user_id = $1
     `;
     const result = await pool.query(selectQuery, [userId]);
+    console.log(result.rows);
     res.json(result.rows);
   } catch (err) {
     console.error('Error retrieving favorites:', err);
