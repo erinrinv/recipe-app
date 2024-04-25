@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import { Link } from 'react-router-dom';
 import CardHeader from '@mui/material/CardHeader';
@@ -11,7 +11,9 @@ import InfoIcon from '@mui/icons-material/Info';
 
 function RecipeCard({ recipe, isFavorite , onToggleFavorite }) {
   const id = recipe.id ? recipe.id : recipe.recipe_id;
-  console.log(recipe);
+console.log(recipe);
+  
+
   return (
     <div className="recipe-card">
     <Card sx={{ maxWidth: 345 }}>

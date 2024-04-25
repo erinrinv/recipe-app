@@ -4,7 +4,7 @@ import FavoritesPage from '../components/Favorites';
 function Favorites({ userId, onToggleFavorite, favorites }) {
   return (
     <div>
-      <h1>Welcome to the favorites page! Here is where your favorites are stored!</h1>
+      <h1></h1>
       <FavoritesPage userId={userId} favorites = {favorites} onToggleFavorite = {onToggleFavorite}/>
     </div>
   );
