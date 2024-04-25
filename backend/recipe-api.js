@@ -25,6 +25,29 @@ const searchRecipes = async (searchTerm, page) => {
   }
 };
 
+const getRecipes = async () => {
+  if (!apiKey) {
+    throw new Error("API Key not found");
+  }
+
+  const url = "https://api.spoonacular.com/recipes/complexSearch";
+
+  const queryParams = {
+    apiKey,
+    query: "",
+    number: "10",
+    offset: (1 * 10).toString(),
+  };
+
+  try {
+    const searchResponse = await axios.get(url, { params: queryParams });
+    console.log(searchResponse);
+    return searchResponse.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 
 const getRecipeSummary = async (recipeId) => {
   if (!apiKey) {
@@ -66,6 +89,6 @@ const getRecipeInformation = async (recipeId) => {
 module.exports = {
   searchRecipes,
   getRecipeSummary,
-  getRecipeInformation
+  getRecipeInformation,
+  getRecipes
 };
-

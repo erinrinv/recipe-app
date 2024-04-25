@@ -11,7 +11,7 @@ import InfoIcon from '@mui/icons-material/Info';
 
 function RecipeCard({ recipe, isFavorite , onToggleFavorite }) {
   const id = recipe.id ? recipe.id : recipe.recipe_id;
-console.log(recipe);
+  console.log({recipe});
   
 
   return (

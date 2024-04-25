@@ -17,6 +17,25 @@ export const searchRecipes = async (searchTerm, page) => {
   }
 };
 
+export const getRecipes = async () => {
+  const baseUrl = new URL("http://localhost:3001/api/recipes/search");
+  baseUrl.searchParams.append("searchTerm", "pizza");
+  baseUrl.searchParams.append("page", String(1));
+
+  try {
+    const response = await fetch(baseUrl);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    console.log(data);
+    return data.results; // Assuming results is an array of recipes
+  } catch (error) {
+    throw new Error(`Failed to fetch recipes: ${error.message}`);
+  }
+};
+
 export const getRecipeInformation = async (recipeId) => {
   const baseUrl = new URL(`http://localhost:3001/api/recipes/${recipeId}/information`);
 
