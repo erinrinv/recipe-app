@@ -9,15 +9,24 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import InfoIcon from '@mui/icons-material/Info';
 
 
+<<<<<<< HEAD
 function RecipeCard({ recipe, isFavorite , onToggleFavorite }) {
   const id = recipe.id ? recipe.id : recipe.recipe_id;
   console.log({recipe});
   
+=======
+>>>>>>> 7214b0f722b384b3881a9767ae30a9907e4ec0e5
 
   return (
+<<<<<<< HEAD
     <div className="recipe-card">
     <Card sx={{ maxWidth: 345 }}>
       <Link to={`/${id}`} style={{ textDecoration: 'none' }}>
+=======
+    <div className="recipe-card" key={recipe.id}>
+    <Card sx={{ maxWidth: 345 }}>
+      <Link to={`/${recipe.id}`} style={{ textDecoration: 'none' }}>
+>>>>>>> 7214b0f722b384b3881a9767ae30a9907e4ec0e5
         <CardHeader
           action={
             <IconButton aria-label="settings">
@@ -28,7 +37,12 @@ function RecipeCard({ recipe, isFavorite , onToggleFavorite }) {
         />
       </Link>
       <CardHeader
+<<<<<<< HEAD
 
+=======
+        
+        // Other props
+>>>>>>> 7214b0f722b384b3881a9767ae30a9907e4ec0e5
       />
       <CardMedia
         component="img"
