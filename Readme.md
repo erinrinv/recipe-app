@@ -15,19 +15,17 @@ The server-side infrastructure is constructed using Node.js and Express.js, with
 ## Screenshot
 
 ### Home page
-
-
-### Signup page
+!["Home"](https://github.com/erinrinv/recipe-app/blob/master/Planning/Media/main%20page%20query.jpg)
 
 
 ### Details Page
-
+!["detail"](https://github.com/erinrinv/recipe-app/blob/master/Planning/Media/details.jpg)
 
 ### Favorites Page
-
+!["favorites"](https://github.com/erinrinv/recipe-app/blob/master/Planning/Media/favorites.png)
 
 ### Login Page
-
+!["login"](https://github.com/erinrinv/recipe-app/blob/master/Planning/Media/login.png)
 
 
 
